@@ -93,4 +93,31 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    public Contact giveContact(int phone) {
+        Contact contact = null;
+        Contact next = null;
+        initializeIterator();
+        while (hasNext() && contact == null) {
+            next = next();
+            if (phone == next.getPhone())
+                contact = next;
+        }
+        return contact;
+    }
+
+    public boolean existPhone() {
+        boolean exist = false;
+        initializeIterator();
+        int compare = currentContact;
+        while (hasNext() && !exist) {
+            currentContact++;
+            while (hasNext()) {
+                if (contacts[compare].getPhone() == next().getPhone())
+                    exist = true;
+            }
+            compare++;
+            currentContact = compare;
+        }
+        return exist;
+    }
 }
