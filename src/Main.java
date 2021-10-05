@@ -160,18 +160,24 @@ public class Main {
     }
 
     private static void giveContact(Scanner in, ContactBook cBook) {
-        Contact contact;
         int phone;
         phone = in.nextInt();
         in.nextLine();
-        contact = cBook.giveContact(phone);
-        if (contact != null) { System.out.println(contact.getName()); }
-        else { System.out.println(CONTACT_NOT_EXIST);}
+        if (cBook.giveContact(phone) != null) {
+            System.out.println(cBook.giveContact(phone).getName());
+        }
+        else {
+            System.out.println(CONTACT_NOT_EXIST);
+        }
     }
 
     private static void existPhone(ContactBook cBook) {
-        if (cBook.existPhone()) {System.out.println(SAME_PHONE);}
-        else {System.out.println(NO_SAME_PHONE);}
+        if (cBook.existPhone()) {
+            System.out.println(SAME_PHONE);
+        }
+        else {
+            System.out.println(NO_SAME_PHONE);
+        }
     }
 
 }
